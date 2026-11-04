@@ -64,7 +64,7 @@ class ClassificationHead(nn.Module):
         )
 
     def forward(self, x):
-        x = self.conv(x)  # (B, 32, 600)
+        x = self.conv(x)  # (B, 128, 600)
         x = torch.cat([x.mean(-1), x.amax(-1)], dim=1)
         return self.mlp(x)  # (B, 1), raw logit
 
